@@ -204,6 +204,7 @@
     // console.log(date.toString().slice(16, -18))     //현재 시각
 
 
+    const darkmodeBtn = document.getElementById("darkmodeBtn")
     
     //다크모드
     function darkmode(){
@@ -213,12 +214,14 @@
         const currentTheme = body.getAttribute('data-bs-theme');
         if (currentTheme === "dark") {
             body.removeAttribute('data-bs-theme');
+            darkmodeBtn.innerText="다크모드"
         } else {
             body.setAttribute('data-bs-theme', 'dark');
+            darkmodeBtn.innerText="라이트모드"
         }
     }
 
-    const darkmodeBtn = document.getElementById("darkmodeBtn")
+
     darkmodeBtn.addEventListener("click", darkmode) //다크모드 버튼에 이벤트리스너 추가
 
 

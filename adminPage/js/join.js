@@ -1,4 +1,26 @@
 // 제출 이벤트를 받는다 (이벤트 핸들링)
+const darkBtn = document.getElementById("darkBtn")
+
+function darkmode(){
+    console.log("123")
+    const body = document.getElementById("body")
+    const container = document.getElementById("container");
+
+    const currentTheme = body.getAttribute('data-bs-theme');
+    if (currentTheme === "dark") {
+        body.removeAttribute('data-bs-theme');
+        darkBtn.innerText="다크모드"
+    } else {
+        body.setAttribute('data-bs-theme', 'dark');
+        darkBtn.innerText="라이트모드"
+    }
+}
+
+
+darkBtn.addEventListener("click", darkmode) //다크모드 버튼에 이벤트리스너 추가
+
+
+
 const form = document.getElementById("form")
 
 
@@ -28,12 +50,14 @@ form.addEventListener("submit", (e)=>{
     }
 
     document.body.innerHTML=""
+    document.write(`<div>`)
     document.write(`<h1>${userId}님 환영합니다</h1>`)
     document.write(`<h3>회원 가입 시 입력하신 내역은 다음과 같습니다.</h3>`)
     document.write(`<hr>`)
     document.write(`<p>아이디 : ${userId}</p>`) 
     document.write(`<p>이름 : ${userName}</p>`)
     document.write(`<p>전화번호 : ${userPhone}</p>`)
+    document.write(`</div>`)
 
 // 3회차 마무리 과제
 
@@ -45,22 +69,6 @@ form.addEventListener("submit", (e)=>{
 // 이름 : userName
 // 전화번호 : userPhone
 // 원하는 직무 : userPosition
-
-    function darkmode(){
-        const body = document.getElementById("body")
-        const table = document.getElementById("container");
-
-        const currentTheme = body.getAttribute('data-bs-theme');
-        if (currentTheme === "dark") {
-            body.removeAttribute('data-bs-theme');
-        } else {
-            body.setAttribute('data-bs-theme', 'dark');
-        }
-    }
-
-    const darkmodeBtn = document.getElementById("darkmodeBtn")
-    darkmodeBtn.addEventListener("click", darkmode) //다크모드 버튼에 이벤트리스너 추가
-
 
 })
 
