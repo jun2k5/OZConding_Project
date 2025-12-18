@@ -1,15 +1,20 @@
 #최신 100곡 추출하기
 import requests
 from bs4 import BeautifulSoup
+import dotenv
+import os
 
 url = "https://www.melon.com/new/index.htm"
 
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+dotenv.load_dotenv()
+user_agent = os.getenv("USER_AGENT")
+
 hdr = {'User-agent' : user_agent}
 
 req = requests.get(url, headers=hdr)
 #print(req)  #406상태코드 반환, 사용자 정보가 없다면 멜론에서는 크롤링을 허용해주지않음
             #따라서 user_agent정보를 추가하여 사람이 접속함을 알림 
+            
 html = req.text
 soup = BeautifulSoup(html, "html.parser")
 result = soup.select(".wrap_song_info")
